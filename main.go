@@ -3,6 +3,7 @@ package main
 import (
 	"delivery/component/appctx"
 	"delivery/modules/restaurants/restauranttransport/ginrestaurant"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -24,6 +25,7 @@ func main() {
 		},
 	)
 	dsn := os.Getenv("DBConnection")
+	fmt.Println(dsn)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
 		Logger: newLogger,
 	})
