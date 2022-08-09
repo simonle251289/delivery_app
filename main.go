@@ -9,7 +9,6 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"log"
-	"net/http"
 	"os"
 	"time"
 )
@@ -39,11 +38,6 @@ func main() {
 
 func runService(db *gorm.DB) error {
 	r := gin.Default()
-	r.GET("/ping", func(context *gin.Context) {
-		context.JSON(http.StatusOK, gin.H{
-			"message": "OK",
-		})
-	})
 	appCtx := appctx.NewAppContext(db)
 	//Restaurant
 	restaurants := r.Group("/restaurants")
